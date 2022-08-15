@@ -1,0 +1,117 @@
+.body {
+    margin: 0px;
+    font-family: "Lato", "Arial", "游明朝", "YuMincho", "Hiragino Mincho ProN W3", "MS明朝", sans-serif;
+}
+
+.container {
+    background:center / cover;
+    background: radial-gradient(grey, black);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-container {
+    background: linear-gradient(43deg, #4158D0, #C850C0 46%, #FFCC70);
+    width: 350px;
+    height: 525px;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 1.35px;
+    border-color: darkslategrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.blueman {
+    height: 125px;
+    position: absolute;
+    top: 80px;
+}
+
+.message-container {
+    display: flex;
+    width: 76%;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-container {
+    position: absolute;
+    bottom: 44px;
+}
+
+p {
+    font-family: "Lato", "Arial", "游明朝", "YuMincho", "Hiragino Mincho ProN W3", "MS明朝", sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 15.5px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.issueNumber-container {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+
+p.issue-number {
+    font-family: "Lato", sans-serif;
+}
+
+p.title {
+    font-style: italic;
+    font-family: "Lato", sans-serif;
+}
+
+p.category {
+    font-size: 17px;
+    font-weight: 500;
+    font-family: "Lato", sans-serif;
+}
+
+.border {
+    position: absolute;
+    bottom: 53px;
+    background-color: #221e1e90;
+    height: 2.8px;
+    width: 120px;
+    border-radius: 2px;
+}
+
+.title {
+    position: absolute;
+    bottom: 11.5px;
+    font-size: 14px;
+}
+
+.button {
+    height: 40px;
+    width: 100px;
+    display: flex;
+    border-radius: 22px;
+    color: #ffffff;
+    background: linear-gradient(43deg, #4158D0, #C850C0 46%, #FFCC70);
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    border-width: 0;
+    padding-bottom: 2px;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.btn-text {
+    font-size: 14.5px;
+    font-family: "Lato", sans-serif;
+}
