@@ -85,4 +85,5 @@ function cssChangeText() {
     textbox.replaceChild(p_new_message_element, p_message_element);
     categorybox.replaceChild(p_new_category_element, p_category_element);
     issueNumberbox.replaceChild(p_new_issue_number_element, p_issue_number_element);
+    
 }
