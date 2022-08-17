@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Card</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js';
+        import { getFirestore, collection, doc, setDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+        const firebaseConfig = {
+            apiKey: "AIzaSyC2uGQbTynGIm2AzMbGF1CO_A3ieF_5kL4",
+            authDomain: "issue-card.firebaseapp.com",
+            databaseURL: "https://issue-card-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "issue-card",
+            storageBucket: "issue-card.appspot.com",
+            messagingSenderId: "936978701874",
+            appId: "1:936978701874:web:75b386a426b4327dafe62b",
+            measurementId: "G-8FMTNDN7XC"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        const db = getFirestore(app);
+        const cardsRef = collection(db, "cards");
+        
+        /* データ登録テンプレ
+        await setDoc(doc(cardsRef, "1"), {
+            createdAt: new Date(),
+            issue: "男女比は今のままでいいのか？",
+            category: "Diversity",
+            number: "#1",
+            good: 12,
+            tackledBy: "daiki"});
+        await setDoc(doc(cardsRef, "2"), {
+            createdAt: new Date(),
+            issue: "学部の多様性は今のままでいいのか？",
+            category: "Diversity",
+            number: "#2",
+            good: 22,
+            tackledBy: "raiki"});
+        await setDoc(doc(cardsRef, "3"), {
+            createdAt: new Date(),
+            issue: "日本出身者と国際生は同じ活動ができているか？",
+            category: "Diversity",
+            number: "#3",
+            good: 32,
+            tackledBy: "taiki"});
+        await setDoc(doc(cardsRef, "4"), {
+            createdAt: new Date(),
+            issue: "今のアイセックには多様性があると言えるのか？",
+            category: "Diversity",
+            number: "#4",
+            good: 42,
+            tackledBy: "haiki"});
+        await setDoc(doc(cardsRef, "5"), {
+            createdAt: new Date(),
+            issue: "今のアイセックが排除してしまっている者は何か？",
+            category: "Diversity",
+            number: "#5",
+            good: 52,
+            tackledBy: "waiki"});
+        */
+        
+    </script>  
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div id="issueNumberbox" class="issueNumber-container">
+                <p class="issue-number">
+                    #N
+                </p>
+            </div>
+            <img class="blueman" src="asset/blueman_white.png" alt="blueman_white">
+            <div id="textbox" class="message-container">
+                <p class="message">
+                    What is your issue?
+                </p>
+            </div>
+            <div id="categorybox" class="category-container">
+                <p class="category">
+                    Category
+                </p>
+            </div>
+            <div class="border"></div>
+            <p class="title">ISSUE CARD</p>
+        </div>
+        <input 
+            type="button"
+            class="button"
+            value="change"
+            id="button" 
+        >
+            <!--<p class="btn-text">change</p>-->    
+        <!--</button>-->
+        <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
+        import { getFirestore, collection, doc, setDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+        
+        const firebaseConfig2 = {
+            apiKey: "AIzaSyC2uGQbTynGIm2AzMbGF1CO_A3ieF_5kL4",
+            authDomain: "issue-card.firebaseapp.com",
+            databaseURL: "https://issue-card-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "issue-card",
+            storageBucket: "issue-card.appspot.com",
+            messagingSenderId: "936978701874",
+            appId: "1:936978701874:web:75b386a426b4327dafe62b",
+            measurementId: "G-8FMTNDN7XC"
+        };
+        const app2 = initializeApp(firebaseConfig2);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        const db2 = getFirestore(app2);
+
+        /* データ登録テンプレ
+        await setDoc(doc(cardsRef, "1"), {
+            createdAt: new Date(),
+            issue: "男女比は今のままでいいのか？",
+            category: "Diversity",
+            number: "#1",
+            good: 12,
+            tackledBy: "daiki"});
+        await setDoc(doc(cardsRef, "2"), {
+            createdAt: new Date(),
+            issue: "学部の多様性は今のままでいいのか？",
+            category: "Diversity",
+            number: "#2",
+            good: 22,
+            tackledBy: "raiki"});
+        await setDoc(doc(cardsRef, "3"), {
+            createdAt: new Date(),
+            issue: "日本出身者と国際生は同じ活動ができているか？",
+            category: "Diversity",
+            number: "#3",
+            good: 32,
+            tackledBy: "taiki"});
+        await setDoc(doc(cardsRef, "4"), {
+            createdAt: new Date(),
+            issue: "今のアイセックには多様性があると言えるのか？",
+            category: "Diversity",
+            number: "#4",
+            good: 42,
+            tackledBy: "haiki"});
+        await setDoc(doc(cardsRef, "5"), {
+            createdAt: new Date(),
+            issue: "今のアイセックが排除してしまっている者は何か？",
+            category: "Diversity",
+            number: "#5",
+            good: 52,
+            tackledBy: "waiki"});
+        */
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); 
+            //The maximum is exclusive and the minimum is inclusive
+        }
+        
+        async function cssChangeText() {
+            let textbox = document.getElementById("textbox");
+            let p_message_element = textbox.querySelector("p");
+        
+            let categorybox = document.getElementById("categorybox");
+            let p_category_element = categorybox.querySelector("p");
+        
+            let issueNumberbox = document.getElementById("issueNumberbox");
+            let p_issue_number_element = issueNumberbox.querySelector("p");
+        
+            let p_new_message_element = document.createElement('p');
+            let p_new_category_element = document.createElement('p');
+            let p_new_issue_number_element = document.createElement('p');
+        
+            let cardList = [];
+            const querySnapshot = await getDocs(collection(db2, "cards"));
+            querySnapshot.forEach((doc) => {
+            cardList.push(doc.data())
+            console.log(`${doc.id} => ${doc.data().issue}`);
+            });
+            console.log(cardList);
+
+            let i = getRandomInt(0, cardList.length);
+        
+            console.log(cardList[i].issue);
+            console.log(cardList[i].category);
+            console.log(i);
+        
+            p_new_message_element.textContent = cardList[i].issue;
+            p_new_category_element.textContent = cardList[i].category;
+            p_new_issue_number_element.textContent = cardList[i].number;
+        
+            textbox.replaceChild(p_new_message_element, p_message_element);
+            categorybox.replaceChild(p_new_category_element, p_category_element);
+            issueNumberbox.replaceChild(p_new_issue_number_element, p_issue_number_element);
+        }
+
+        let button = document.getElementById('button');
+        button.addEventListener('click', cssChangeText);
+        </script>
+    </div>
+</body>
+</html>
