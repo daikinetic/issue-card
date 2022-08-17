@@ -1,3 +1,18 @@
+
+/*
+if (!firebase.apps.length) {
+  firebase.initializeApp({
+    apiKey: "AIzaSyC2uGQbTynGIm2AzMbGF1CO_A3ieF_5kL4",
+    authDomain: "issue-card.firebaseapp.com",
+    projectId: "issue-card",
+    storageBucket: "issue-card.appspot.com",
+    messagingSenderId: "936978701874",
+    appId: "1:936978701874:web:d7f2c3d7bb489de6afe62b",
+    measurementId: "G-W5HTB0QYTB"
+  })
+}
+*/
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -18,6 +33,21 @@ function cssChangeText() {
     let p_new_message_element = document.createElement('p');
     let p_new_category_element = document.createElement('p');
     let p_new_issue_number_element = document.createElement('p');
+
+    /*
+    const db = firebase.firestore();
+    db.collection("users").add({
+        //DBに突っ込みたいもの
+        name: "マイメロ",
+        age: 27
+    })
+    .then((doc) => {
+        console.log(`追加に成功しました`);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+    */
 
     textList = [
         { 
