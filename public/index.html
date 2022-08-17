@@ -72,6 +72,9 @@
 <body>
     <div class="container">
         <div class="card-container">
+            <div id="goodbox" class="good-box">
+                <p class="good">♡M</p>
+            </div>
             <div id="issueNumberbox" class="issueNumber-container">
                 <p class="issue-number">
                     #N
@@ -97,6 +100,12 @@
             value="change"
             id="button" 
         >
+        <input 
+            type="button"
+            class="button"
+            value="change"
+            id="goodbutton" 
+        >
             <!--<p class="btn-text">change</p>-->    
         <!--</button>-->
         <script type="module">
@@ -118,50 +127,13 @@
         // Initialize Cloud Firestore and get a reference to the service
         const db2 = getFirestore(app2);
 
-        /* データ登録テンプレ
-        await setDoc(doc(cardsRef, "1"), {
-            createdAt: new Date(),
-            issue: "男女比は今のままでいいのか？",
-            category: "Diversity",
-            number: "#1",
-            good: 12,
-            tackledBy: "daiki"});
-        await setDoc(doc(cardsRef, "2"), {
-            createdAt: new Date(),
-            issue: "学部の多様性は今のままでいいのか？",
-            category: "Diversity",
-            number: "#2",
-            good: 22,
-            tackledBy: "raiki"});
-        await setDoc(doc(cardsRef, "3"), {
-            createdAt: new Date(),
-            issue: "日本出身者と国際生は同じ活動ができているか？",
-            category: "Diversity",
-            number: "#3",
-            good: 32,
-            tackledBy: "taiki"});
-        await setDoc(doc(cardsRef, "4"), {
-            createdAt: new Date(),
-            issue: "今のアイセックには多様性があると言えるのか？",
-            category: "Diversity",
-            number: "#4",
-            good: 42,
-            tackledBy: "haiki"});
-        await setDoc(doc(cardsRef, "5"), {
-            createdAt: new Date(),
-            issue: "今のアイセックが排除してしまっている者は何か？",
-            category: "Diversity",
-            number: "#5",
-            good: 52,
-            tackledBy: "waiki"});
-        */
         function getRandomInt(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min) + min); 
             //The maximum is exclusive and the minimum is inclusive
         }
-        
+
         async function cssChangeText() {
             let textbox = document.getElementById("textbox");
             let p_message_element = textbox.querySelector("p");
@@ -171,11 +143,19 @@
         
             let issueNumberbox = document.getElementById("issueNumberbox");
             let p_issue_number_element = issueNumberbox.querySelector("p");
+            console.log('型変換です');
+            console.log(Number(p_issue_number_element.textContent.replace('#', '')));
+
+            let goodbox = document.getElementById("goodbox");
+            let p_good_element = goodbox.querySelector("p");
+            console.log('型変換です');
+            console.log(Number(p_good_element.textContent.replace('♡', '')));
         
             let p_new_message_element = document.createElement('p');
             let p_new_category_element = document.createElement('p');
             let p_new_issue_number_element = document.createElement('p');
-        
+            let p_new_good_element = document.createElement('p');
+
             let cardList = [];
             const querySnapshot = await getDocs(collection(db2, "cards"));
             querySnapshot.forEach((doc) => {
@@ -188,16 +168,56 @@
         
             console.log(cardList[i].issue);
             console.log(cardList[i].category);
+            console.log(cardList[i].good);
             console.log(i);
         
             p_new_message_element.textContent = cardList[i].issue;
             p_new_category_element.textContent = cardList[i].category;
-            p_new_issue_number_element.textContent = cardList[i].number;
+            p_new_issue_number_element.textContent = "#" + cardList[i].number;
+            p_new_good_element.textContent = "♡" + cardList[i].good;
         
             textbox.replaceChild(p_new_message_element, p_message_element);
             categorybox.replaceChild(p_new_category_element, p_category_element);
             issueNumberbox.replaceChild(p_new_issue_number_element, p_issue_number_element);
+            goodbox.replaceChild(p_new_good_element, p_good_element);
         }
+
+        function goodChange() {
+            let issueNumberbox = document.getElementById("issueNumberbox");
+            let p_issue_number_element = issueNumberbox.querySelector("p");
+            let issue_number = Number(p_issue_number_element.textContent.replace('#', ''));
+
+            let goodbox = document.getElementById("goodbox");
+            let p_good_element = goodbox.querySelector("p");
+            let good_number = Number(p_good_element.textContent.replace('♡', ''))
+
+            const specialOfTheCard = doc(db2, 'cards/'+ issue_number);
+            const docData = {
+                good: good_number + 100
+            };
+            setDoc(specialOfTheCard, docData, { merge: true });
+
+            let new_good = good_number + 100;
+            let p_new_good_element = document.createElement('p');
+            p_new_good_element.textContent = "♡" + new_good;
+            goodbox.replaceChild(p_new_good_element, p_good_element);
+
+            // const cardsRef = collection(db, "cards");
+        
+            /* データ登録テンプレ
+            await setDoc(doc(cardsRef, "1"), {
+                createdAt: new Date(),
+                issue: "男女比は今のままでいいのか？",
+                category: "Diversity",
+                number: "#1",
+                good: 12,
+                tackledBy: "daiki"
+            });
+            */
+        }
+            
+        let goodbutton = document.getElementById('goodbutton');
+        goodbutton.addEventListener('click', goodChange);
 
         let button = document.getElementById('button');
         button.addEventListener('click', cssChangeText);

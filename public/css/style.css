@@ -57,6 +57,14 @@ p {
     text-align: center;
 }
 
+.good-box {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 .issueNumber-container {
     position: absolute;
     top: 0px;
