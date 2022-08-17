@@ -16,6 +16,7 @@
     "source": "functions"
   },
   "hosting": {
+    "site":"issue-card",
     "public": "public",
     "ignore": [
       "firebase.json",
