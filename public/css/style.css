@@ -62,7 +62,7 @@ p {
     width: 40px;
     position: absolute;
     top: 0px;
-    right: 0px;
+    right: 15px;
 }
 
 .issueNumber-container {
@@ -101,6 +101,15 @@ p.category {
     font-size: 14px;
 }
 
+.button-container {
+    height: 100px;
+    width: 300px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .button {
     height: 40px;
     width: 100px;
@@ -110,11 +119,11 @@ p.category {
     background: linear-gradient(43deg, #4158D0, #C850C0 46%, #FFCC70);
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
     border-width: 0;
     padding-bottom: 2px;
     font-size: 14.5px;
     font-family: "Lato", sans-serif;
+    margin-right: 20px;
 }
 
 .button:hover {
