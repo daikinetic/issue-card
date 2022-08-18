@@ -103,8 +103,8 @@
             >
             <input 
                 type="button"
-                class="button"
-                value="change"
+                class="button-good"
+                value="good!"
                 id="goodbutton" 
             >
         </div>
@@ -196,11 +196,11 @@
 
             const specialOfTheCard = doc(db2, 'cards/'+ issue_number);
             const docData = {
-                good: good_number + 100
+                good: good_number + 1
             };
             setDoc(specialOfTheCard, docData, { merge: true });
 
-            let new_good = good_number + 100;
+            let new_good = good_number + 1;
             let p_new_good_element = document.createElement('p');
             p_new_good_element.textContent = "♡" + new_good;
             goodbox.replaceChild(p_new_good_element, p_good_element);
