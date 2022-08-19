@@ -4,7 +4,7 @@
 }
 
 .container {
-    background:center / cover;
+    background: center / cover;
     background: radial-gradient(grey, black);
     width: 100%;
     min-height: 100vh;
@@ -12,6 +12,46 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
+}
+
+.link-container {
+    width: 350px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-container li {
+    list-style: none;
+    margin-right: 20px;
+}
+
+.link-container li:last-child {
+    margin-right: 0px;
+}
+
+.link-container a {
+    font-family: "Lato", "Arial", "游明朝", "YuMincho", "Hiragino Mincho ProN W3", "MS明朝", sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 15.5px;
+    line-height: 24px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.link-container a:hover {
+    opacity: 0.8;
 }
 
 .card-container {
@@ -27,6 +67,26 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+}
+
+.grad-0 {
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+.grad-1 {
+    background-color: #FF9A8B;
+    background-image: linear-gradient(45deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+}
+
+.grad-2 {
+    background-color: #FFE53B;
+    background-image: linear-gradient(45deg, #FF2525 0%, #FFE53B 95%);
+}
+
+.grad-3 {
+    background-color: #08AEEA;
+    background-image: linear-gradient(45deg, #08AEEA 0%, #2AF598 100%);
 }
 
 .blueman {
@@ -114,9 +174,8 @@ p.category {
     height: 40px;
     width: 100px;
     display: flex;
+    color: white;
     border-radius: 22px;
-    color: #ffffff;
-    background: linear-gradient(43deg, #4158D0, #C850C0 46%, #FFCC70);
     align-items: center;
     justify-content: center;
     border-width: 0;
@@ -126,13 +185,37 @@ p.category {
     margin-right: 40px;
 }
 
+.good-button-cover {
+    background:center / cover;
+    background-image: url(../asset/like.png);
+    height: 53px;
+    width: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 0;
+    margin-right: 15px;
+}
+
+.tackle-button-cover {
+    background:center / cover;
+    background-image: url(../asset/tackle.png);
+    height: 55px;
+    width: 55px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    border-width: 0;
+}
+
 .button-good {
     height: 55px;
     width: 55px;
     display: flex;
     border-radius: 50%;
     color: #ffffff;
-    background: linear-gradient(43deg, #4158D0, #C850C0 46%, #FFCC70);
+    background-color: rgba(255, 255, 255, 0);
     align-items: center;
     justify-content: center;
     border-width: 0;
@@ -142,6 +225,14 @@ p.category {
 }
 
 .button:hover {
+    opacity: 0.8;
+}
+
+.good-button-cover:hover {
+    opacity: 0.8;
+}
+
+.tackle-button-cover:hover {
     opacity: 0.8;
 }
 
