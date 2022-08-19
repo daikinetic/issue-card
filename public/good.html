@@ -73,9 +73,9 @@
     <div class="container">
         <div class="link-container">
             <ul class="link-list">
-                <li class="link-good">
-                    <a href="/good.html">
-                        #♡
+                <li class="link-home">
+                    <a href="/index.html">
+                        #Home
                     </a>
                 </li>
                 <li class="link-diversity">
@@ -85,7 +85,7 @@
                 </li>
             </ul>
         </div>
-        <div class="card-container">
+        <div class="card-container grad-1">
             <div id="goodbox" class="good-box">
                 <p class="good">♡M</p>
             </div>
@@ -97,7 +97,7 @@
             <img class="blueman" src="asset/blueman_white.png" alt="blueman_white">
             <div id="textbox" class="message-container">
                 <p class="message">
-                    What is your issue?
+                    This is iine order!
                 </p>
             </div>
             <div id="categorybox" class="category-container">
@@ -111,7 +111,7 @@
         <div class="button-container">
             <input 
                 type="button"
-                class="button grad-0"
+                class="button grad-1"
                 value="change"
                 id="button" 
             >
@@ -135,8 +135,8 @@
         <!--</button>-->
         <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
-        import { getFirestore, collection, doc, setDoc, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
-        
+        import { getFirestore, collection, doc, setDoc, getDocs, query, orderBy, limit, where } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+
         const firebaseConfig2 = {
             apiKey: "AIzaSyC2uGQbTynGIm2AzMbGF1CO_A3ieF_5kL4",
             authDomain: "issue-card.firebaseapp.com",
@@ -182,7 +182,23 @@
             let p_new_good_element = document.createElement('p');
 
             let cardList = [];
-            const querySnapshot = await getDocs(collection(db2, "cards"));
+
+            /* 条件検索テンプレ
+            import { collection, query, where, getDocs } from "firebase/firestore";
+
+            const q = query(collection(db, "cities"), where("capital", "==", true));
+
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            });
+            */
+
+            const cardsRef = collection(db2, "cards");
+            const q = query(cardsRef, orderBy("good", "desc"), limit(5));
+
+            const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
             cardList.push(doc.data())
             console.log(`${doc.id} => ${doc.data().issue}`);
@@ -279,7 +295,7 @@
 
         let tacklebutton = document.getElementById('tacklebutton');
         tacklebutton.addEventListener('click', displayTackledBy);
-
+        
         let button = document.getElementById('button');
         button.addEventListener('click', cssChangeText);
         </script>
