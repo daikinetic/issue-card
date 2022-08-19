@@ -29,7 +29,7 @@
         const db = getFirestore(app);
         const cardsRef = collection(db, "cards");
         
-        /*
+        /*　データ登録テンプレ
         await setDoc(doc(cardsRef, "6"), {
             createdAt: new Date(),
             issue: "JWI は女性しか参加できない。" + "\n" + "アイセックの理念に反することはないのか？",
